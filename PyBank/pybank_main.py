@@ -6,9 +6,10 @@ file_output = "pybank_analysis.txt"
 tmonths = 0
 total = 0
 previous = 0
-month_change = []
 maxinc = 0 
 maxdec = 0
+#empty list
+month_change = []
 
 # read the csv &convert 
 with open(file_load) as profitdata:
