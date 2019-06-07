@@ -5,9 +5,10 @@ file_output = 'pypoll_analysis.txt'
 #variables
 total = 0
 num_candidates = 0
+max_votes = -1
+#empty list or dictionary
 candidates = []
 candidate_votes = {}
-max_votes = -1
 
 # read csv
 with open(file_load) as polldata:
