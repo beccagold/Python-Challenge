@@ -10,18 +10,18 @@ row_used = 0
 maxinc = 0 
 maxdec = 0
 #empty list
-month_change = []
+month = []
 
 # read the csv &convert 
 with open(file_load) as profitdata:
     reader = csv.DictReader(profitdata)
     for row in reader: #loop through rows to calculate # months and total
-        # track total
-        tmonths += 1 
         total = total + int(row["Profit/Losses"])
+        tmonths += 1 
+        
         if tmonths > 1: #determines change in profit and if its greater than the inc/dec of new to find max
             change = int(row["Profit/Losses"])-row_used
-            month_change.append(change)
+            month.append(change)
             
             if change > maxinc:#finds max inc
                 maxinc_month = row["Date"]
@@ -32,11 +32,10 @@ with open(file_load) as profitdata:
         row_used = int(row["Profit/Losses"])#cycles through rows
 
 # Calculate the average
-sums = sum(month_change)
-length  = len(month_change)+ 0.0
+sums = sum(month)
+length  = len(month)
 avg = round(sums/length,2)
 
-#output = ('Financial Analysis'+ '\n'+'.........................'+ '\n'  +'Total Months: ' + str(tmonths) + '\n' +'Total: ' + ' $'+ str(total) + '\n' +'Average Change:' + ' $' + str(avg ) + '\n' +'The Greatest Increase in Profits: ' + maxinc_month + ' $' + str(maxinc) + '\n' +'The Greatest Decrease in Profits: ' + maxdec_month + ' $' + str(maxdec) + '\n')
 
 print('Financial Analysis'+ '\n'+'.........................'+ '\n'  +'Total Months: ' + str(tmonths) + '\n' +'Total: ' + ' $'+ str(total) + '\n' +'Average Change:' + ' $' + str(avg ) + '\n' +'The Greatest Increase in Profits: ' + maxinc_month + ' $' + str(maxinc) + '\n' +'The Greatest Decrease in Profits: ' + maxdec_month + ' $' + str(maxdec) + '\n')
 
